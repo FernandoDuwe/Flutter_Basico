@@ -6,7 +6,7 @@ import 'package:http/http.dart' as http;
 class BeerPage extends StatelessWidget {
   const BeerPage({Key? key}) : super(key: key);
 
-  Future<List> Internal_GetListBeer() async {
+  Future<Map> Internal_GetListBeer() async {
     Uri vrURL = Uri.https("api.sampleapis.com", "beers/ale");
 
     http.Response vrResponse = await http.get(vrURL);
@@ -23,8 +23,10 @@ class BeerPage extends StatelessWidget {
             image: NetworkImage(prBeers[index]["image"]),
             height: 64,
             width: 64,
-            loadingBuilder: (context, child, loadingProgress) => CircularProgressIndicator(),
-            errorBuilder: (context, error, stackTrace) => Icon(Icons.image_not_supported_outlined),
+            loadingBuilder: (context, child, loadingProgress) =>
+                CircularProgressIndicator(),
+            errorBuilder: (context, error, stackTrace) =>
+                Icon(Icons.image_not_supported_outlined),
           ),
           title: Text(prBeers[index]["name"]),
           subtitle: Text(prBeers[index]["price"]),
@@ -40,8 +42,7 @@ class BeerPage extends StatelessWidget {
       body: FutureBuilder(
         future: this.Internal_GetListBeer(),
         builder: (context, snapshot) {
-          if (snapshot.hasError)
-            return Text("${snapshot.error}");
+          if (snapshot.hasError) return Text("${snapshot.error}");
 
           if ((snapshot.connectionState == ConnectionState.waiting) ||
               (snapshot.connectionState == ConnectionState.none))
