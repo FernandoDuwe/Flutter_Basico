@@ -34,3 +34,8 @@ https://www.proway.com.br/curso/programador-flutter-basico
 - Acessibilidade;
 - Internacionalização;
 - Introdução a Firebase;
+
+
+**Contato**
+Dúvidas, envie um e-mail para fernando_duwe@hotmail.com
+Meu Whatsapp: (47) 99754-3534
